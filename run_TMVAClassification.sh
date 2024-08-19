@@ -37,6 +37,7 @@ cutb=$cut
 ##
 # algo="BDT,BDTG,LD,DNN_GPU"
 #algo="BDT,BDTG,CutsGA,LD"
+algo = "BDT, BDTG, BDTF, 
 algo="BDT"
 
 # stages="0,1,3,2,4,5,6,7,10,11,12,13" ; sequence=0 ; # see definition below #
