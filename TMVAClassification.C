@@ -23,6 +23,8 @@
 
 int TMVAClassification(std::string inputSname, std::string inputBname, std::string mycuts, std::string mycutb, 
                        std::string outputname, float ptmin, float ptmax, std::string mymethod, std::string stage)
+#int TMVAClassification(std::string inputSname, std::string inputBname, std::string mycuts, std::string mycutb, 
+                       std::string outputname, float ptmin, float ptmax, std::string mymethod, std::string stage, int nTrees)
 {
   std::vector<std::string> methods;
   std::vector<int> stages;
