@@ -128,12 +128,17 @@ done
     while [[ $conf != 'y' && $conf != 'n' ]] ; do { echo "warning: input [y/n]" ; read conf ; } ; done ;
     [[ $conf == 'n' ]] && { rm *_${tmp}.exe ; exit ; }
 }
-
+# SEE HERE
+# Run TMVAClassification.C within ROOT context for each NTrees value
+#for ntrees in "${ntrees_values[@]}"; do
+#    methodName="BDT_NTrees${ntrees}"
+#    output_n="${output}_${methodName}"
 # train
 stage=$stages
 while [[ $stage == *,* ]]
 do
-    [[ ${1:-0} -eq 1 ]] && { ./TMVAClassification_${tmp}.exe $inputs $inputb "$cuts" "$cutb" $output "$algo" "$stage"; } 
+ [[ ${1:-0} -eq 1 ]] && { ./TMVAClassification_${tmp}.exe $inputs $inputb "$cuts" "$cutb" $output "$algo" "$stage"; } 
+# [[ ${1:-0} -eq 1 ]] && { ./TMVAClassification_${tmp}.exe $inputs $inputb "$cuts" "$cutb" $output "$algo" "$stage" "$ntrees; } 
     [[ $sequence -eq 0 ]] && break;
     while [[ $stage != *, ]] ; do stage=${stage%%[0-9]} ; done ;
     stage=${stage%%,}
