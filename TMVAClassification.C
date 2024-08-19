@@ -294,23 +294,29 @@ int TMVAClassification(std::string inputSname, std::string inputBname, std::stri
   if (Use["BDTG"]) // Gradient Boost
     factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDTG",
                          "!H:!V:NTrees=1000:MinNodeSize=2.5%:BoostType=Grad:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=2" );
-  // "!H:!V:NTrees=505:MinNodeSize=15.5:BoostType=Grad:Shrinkage=0.275:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=3" );
+  // "!H:!V:NTrees=%d:MinNodeSize=15.5:BoostType=Grad:Shrinkage=0.275:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=3" );
 
   if (Use["BDT"])  // Adaptive Boost
     factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDT",
                          "!H:!V:NTrees=850:MinNodeSize=2.5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.5:SeparationType=GiniIndex:nCuts=20" );
+//   "!H:!V:NTrees=%d:MinNodeSize=2.5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.5:SeparationType=GiniIndex:nCuts=20" );
 
   if (Use["BDTB"]) // Bagging
     factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDTB",
                          "!H:!V:NTrees=400:BoostType=Bagging:SeparationType=GiniIndex:nCuts=20" );
+//  "!H:!V:NTrees=%d:BoostType=Bagging:SeparationType=GiniIndex:nCuts=20" );
 
   if (Use["BDTD"]) // Decorrelation + Adaptive Boost
     factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDTD",
                          "!H:!V:NTrees=400:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:SeparationType=GiniIndex:nCuts=20:VarTransform=Decorrelate" );
+  // "!H:!V:NTrees=%d:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:SeparationType=GiniIndex:nCuts=20:VarTransform=Decorrelate" );
+
 
   if (Use["BDTF"])  // Allow Using Fisher discriminant in node splitting for (strong) linearly correlated variables
     factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDTF",
                          "!H:!V:NTrees=50:MinNodeSize=2.5%:UseFisherCuts:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:SeparationType=GiniIndex:nCuts=20" );
+// "!H:!V:NTrees=$d:MinNodeSize=2.5%:UseFisherCuts:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:SeparationType=GiniIndex:nCuts=20" );
+
 
   // RuleFit -- TMVA implementation of Friedman's method
   if (Use["RuleFit"])
